@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIP-AI Colombia - Turismo Inteligente en Cundinamarca</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="ambient-glow"></div>
+
+    <div class="app-layout">
+        <!-- PANEL IZQUIERDO: DISEÑO DE CONTROL AVANZADO -->
+        <div class="sidebar">
+            <div class="brand-container">
+                <div class="brand-icon">🇨🇴</div>
+                <div>
+                    <h1>TRIP-AI</h1>
+                    <p class="subtitle">Turismo Inteligente en Cundinamarca</p>
+                </div>
+            </div>
+            
+            <div class="status-pill">
+                <span class="live-dot"></span> Motor de Rutas Activo
+            </div>
+
+            <!-- Aviso importante del prototipo -->
+            <div style="background: rgba(14, 165, 233, 0.1); border-left: 4px solid #0ea5e9; padding: 10px 12px; border-radius: 6px; font-size: 0.82rem; color: #38bdf8; margin-bottom: 15px; line-height: 1.4;">
+                🚌 <strong>Alcance del Prototipo:</strong> Rutas calculadas exclusivamente en <strong>transporte público</strong> con referencia y salida desde <strong>Bogotá</strong>. Tarifas y costos estimados.
+            </div>
+
+            <form id="tripForm" class="form-group">
+                <label for="promptUsuario">¿Qué aventura quieres vivir?</label>
+                <div class="textarea-box">
+                    <textarea id="promptUsuario" placeholder="Ej: Viaje de 2 días a Suesca para 1 persona con 300000 pesos." required></textarea>
+                </div>
+                
+                <button type="submit" id="btnGenerar">
+                    <span>Diseñar mi Viaje Ideal</span>
+                </button>
+            </form>
+
+            <div class="sidebar-footer">
+                <p>Prototipo académico • UNINPAHU / Desarrollo de Software</p>
+            </div>
+        </div>
+
+        <!-- PANEL DERECHO: CONTENEDOR WOW -->
+        <div class="main-content">
+            <div id="welcome" class="welcome-card">
+                <div class="hero-badge">Explora sin límites</div>
+                <h2>Tu próxima gran escapada comienza aquí</h2>
+                <p>Cuéntanos cuántos van, tu presupuesto y el destino que amas en Cundinamarca. Nuestra inteligencia artificial y motor local crearán tu itinerario al instante.</p>
+                
+                <div class="perks-container">
+                    <div class="perk-tag">🏔️ Planes y Destinos Únicos</div>
+                    <div class="perk-tag">🚌 Rutas en Transporte Público</div>
+                    <div class="perk-tag">💰 Presupuestos desde Bogotá</div>
+                </div>
+            </div>
+
+            <div id="loading">
+                <div class="colombia-orbit">
+                    <div class="orbit-dot yellow"></div>
+                    <div class="orbit-dot blue"></div>
+                    <div class="orbit-dot red"></div>
+                </div>
+                <p class="loading-title">Construyendo tu experiencia...</p>
+                <p class="loading-subtitle">Calculando trayectos, tarifas de transporte público y los mejores rincones de Cundinamarca.</p>
+            </div>
+            
+            <div id="resultado"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('tripForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const textoUsuario = document.getElementById('promptUsuario').value;
+            
+            const loading = document.getElementById('loading');
+            const resultado = document.getElementById('resultado');
+            const welcome = document.getElementById('welcome');
+            const btn = document.getElementById('btnGenerar');
+
+            welcome.style.display = 'none';
+            resultado.style.display = 'none';
+            loading.style.display = 'flex';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/generar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ textoUsuario })
+                });
+                const data = await response.json();
+                
+                resultado.innerHTML = marked.parse(data.itinerario);
+                resultado.style.display = 'block';
+            } catch (err) {
+                resultado.innerHTML = "<p style='color: #ef4444; text-align: center; font-weight: 600;'>Ocurrió un error al conectar con el servidor de rutas.</p>";
+                resultado.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

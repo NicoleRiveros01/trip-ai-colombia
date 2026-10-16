@@ -1,0 +1,35 @@
+municipio,corredor,tipo_plan,precio_transporte,costo_actividades,detalle_actividad
+Zipaquira,Autopista Norte / Cra 7,Cultural,10500 - 11500,75000,Catedral de Sal (Adulto nacional)
+Zipaquira,Autopista Norte / Cra 7,Histórico,10500 - 11500,15000,Plaza de los Comuneros y Museo Arqueológico
+Nemocon,Autopista Norte / Cra 7,Cultural,15600 - 16500,46000,Mina de Sal de Nemocón (Adulto nacional)
+Nemocon,Autopista Norte / Cra 7,Naturaleza,15600 - 16500,10000,Sendero ecológico y miradores de Nemocón
+Chia,Autopista Norte / Cra 7,Gastronómico,7000 - 7400,70000,Andrés Carne de Res (Plato fuerte promedio)
+Chia,Autopista Norte / Cra 7,Cultural,7000 - 7400,15000,Castillo Marroquín y recorrido arquitectónico exterior
+Cajica,Autopista Norte / Cra 7,Gastronómico,7500 - 8800,25000,Almuerzo o pasadía gastronómico local
+Sopo,Autopista Norte / Cra 7,Gastronómico,11200 - 11800,17000,La Cabaña Alpina (Postre y bebida)
+Sopo,Autopista Norte / Cra 7,Naturaleza,11200 - 11800,25000,Parque Ecológico Pionono (Ingreso y senderismo de alta montaña)
+Tocancipa,Autopista Norte / Cra 7,Entretenimiento,9700 - 10200,75000,Parque Jaime Duque (Brazalete Legado)
+Gachancipa,Autopista Norte / Cra 7,Cultural,10900 - 11500,10000,Parque principal y artesanías locales
+Cogua,Autopista Norte / Cra 7,Naturaleza,14200 - 15000,15000,Embalse del Neusa y senderismo
+Suesca,Autopista Norte / Cra 7,Naturaleza,14100 - 14800,90000,Escalada en roca con instructor y equipos
+Suesca,Autopista Norte / Cra 7,Aventura,14100 - 14800,35000,Senderismo por las Famosas Rocas de Suesca y vía férrea
+Cota,Calle 80 (Salida Occidente),Gastronómico,6500 - 7000,15000,Zonas gastronómicas y Maíz Cota
+Tenjo,Calle 80 (Salida Occidente),Naturaleza,9200 - 9800,5000,Peña de Juaica (Aporte comunitario)
+Tabio,Calle 80 (Salida Occidente),Naturaleza,10500 - 11200,24000,Termales de Tabio (El Zipa)
+El Rosal,Calle 80 (Salida Occidente),Rural,11500 - 12200,10000,Senderos rurales y descanso campestre
+Subachoque,Calle 80 (Salida Occidente),Naturaleza,12800 - 13500,5000,Cerro El Tablazo (Aporte acceso finca)
+Funza,Calle 13 / Av. Centenario,Entretenimiento,6000 - 7200,12000,Parques y recreación urbana
+Mosquera,Calle 13 / Av. Centenario,Entretenimiento,7000 - 7500,15000,Humedales y espacios recreativos
+Madrid,Calle 13 / Av. Centenario,Entretenimiento,8200 - 8800,10000,Parques principales y cultura local
+Facatativa,Calle 13 / Antiguo Occidente,Cultural,14000 - 14800,7500,Piedras del Tunjo (Ingreso y mantenimiento)
+Bojaca,Calle 13 / Av. Centenario,Cultural,14500 - 15300,10000,Turismo religioso y bendición vehicular
+Zipacon,Calle 13 / Av. Centenario,Histórico,21000 - 22000,15000,Ruta del café y arquitectura colonial
+Soacha,Autopista Sur,Urbano,3000 - 3500,25000,Salto del Tequendama y turismo urbano
+Sibate,Autopista Sur,Desconexión,5500 - 6000,15000,Ruta de la fresa
+Chipaque,Vía al Llano (Suroriente),Naturaleza,12500 - 13200,15000,Miradores y gastronomía llanera
+Ubaque,Vía al Llano (Suroriente),Naturaleza,18000 - 18900,10000,Laguna de Ubaque y senderismo
+Caqueza,Vía al Llano (Suroriente),Cultural,16500 - 17300,15000,Pueblo histórico y cañón del río Negro
+Choachi,Vía Choachí (Cerros Orientales),Naturaleza,16000 - 16800,50000,Termales Santamónica
+La Calera,Vía La Calera (Calle 85),Desconexión,6200 - 6800,11000,Miradores (Canelazo o chocolate tradicional)
+Guatavita,Vía La Calera (Calle 85),Naturaleza,13500 - 14300,21500,Laguna de Guatavita (Entrada CAR)
+Guatavita,Vía La Calera (Calle 85),Cultural,13500 - 14300,15000,Pueblo Nuevo de Guatavita y Museo Indígena
