@@ -302,7 +302,7 @@ def generar_itinerario_desde_bd(texto_usuario):
 
     # 8. RESPUESTA ESTRUCTURADA
     itinerario_respaldo = (
-        f"🛡️ **[Modo Respaldo Local Inteligente TRIP-AI]**\n"
+        f"---\n"
         f"{nota_informativa}"
         f"Ruta diseñada para **{personas} persona(s)** con duración de **{dias_solicitados} día(s)**:\n\n"
     )
@@ -391,7 +391,7 @@ def generar():
         )
 
     system_instruction = (
-"Eres el guía experto y director creativo de TRIP-AI Colombia, especializado en turismo inteligente, "
+    "Eres el guía experto y director creativo de TRIP-AI Colombia, especializado en turismo inteligente, "
         "sostenible y en transporte público por el departamento de Cundinamarca saliendo desde Bogotá. "
         "Tu tono debe ser profesional, claro, amigable y estructurado, explicando con orden cada detalle.\n\n"
         
@@ -417,7 +417,8 @@ def generar():
         "   - Muestra los resultados financieros tanto de forma **grupal** como **individual por persona** (c/u).\n"
         "   - Compara el Gasto Total con el presupuesto aportado. Si alcanza, indica el remanente. Si no alcanza, especifica claramente el déficit exacto.\n"
         "8. COHERENCIA DE PRESUPUESTO Y ACTIVIDADES: Si el usuario aporta un presupuesto alto (ej. > $350,000), no forces actividades de $0; selecciona experiencias completas y de pago de la base de datos para aprovechar el presupuesto. Si el presupuesto es bajo, prioriza lo económico/gratis.\n\n"
-        
+        "9. RESTRICCIÓN ESTRICTA DE DOMINIO (GUARDRAIL): Si el usuario realiza preguntas totalmente ajenas al turismo, rutas o municipios de Cundinamarca (como política, farándula, historia universal o tecnología general), debes negarte amablemente diciendo que estás diseñado exclusivamente como guía de TRIP-AI para Cundinamarca y redirige de inmediato la conversación hacia la planeación de un viaje por el departamento.\n\n"
+       
         "ESTRUCTURA DE RESPUESTA REQUERIDA:\n"
         "- Utiliza el encabezado oficial: 🤖 **[Modo IA Experta TRIP-AI]**\n"
         "- Si aplica por falta de actividades o ajuste de corredor, incluye una breve y clara **Nota del sistema** al inicio.\n"
@@ -426,14 +427,14 @@ def generar():
         "- Muestra el Gasto Total Estándar.\n"
         "- Agrega obligatoriamente la frase exacta: *'Y si quieres saber el precio del itinerario sin hospedaje ni comida seria este y ya'* seguida del valor de la logística pura (Transporte Urbano + Intermunicipal + Actividades) tanto en total como por persona.\n"
         "- Cierra con la nota financiera: *'📌 Nota financiera: Los montos presentados son valores estimados y aproximados de referencia bajo estándar estudiantil/mochilero...'*\n\n"
-        
+
         f"DATOS OFICIALES DE LA BASE DE DATOS:\n{info_bd_texto}"
     )
 
 # --- FUNCIÓN DE LA IA ULTRA-RÁPIDA (SIN ESPERAS LARGAS) ---
     def llamar_ia():
         response = client.models.generate_content(
-            model='gemini-3.8-flash',
+            model="gemini-3.8-flash",
             contents=texto_usuario,
             config=types.GenerateContentConfig(
                 system_instruction=system_instruction,
@@ -447,8 +448,8 @@ def generar():
     with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
         future = executor.submit(llamar_ia)
         try:
-            # Si en 6 segundos la IA de Google no responde, saltamos al respaldo local de inmediato
-            itinerario = future.result(timeout=6)
+            # Si en 120 segundos la IA de Google no responde, saltamos al respaldo local de inmediato
+            itinerario = future.result(timeout=120)
             print("✨ ¡IA respondió con éxito!")
         except Exception as e:
             print(f"⚡ [CAMBIO INMEDIATO A RESPALDO LOCAL]: {str(e)}")
